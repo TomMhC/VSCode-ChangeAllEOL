@@ -44,8 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 				if (type === vscode.FileType.Directory
 					&& !blackList.includes(name)
-					&& (!whiteList.length || whiteList.includes(name))
-					&& !name.startsWith(".")){
+					&& (!whiteList.length || whiteList.includes(name))){
 					let newWhiteList: Array<string> =  whiteList.includes(name) ? [] : [...whiteList];
 					count += (await convertLineEndingsInFilesInFolder(vscode.Uri.file(posix.join(folder.path, name)), fileTypeArray, newEnding, blackList, newWhiteList)).count;
 				}
